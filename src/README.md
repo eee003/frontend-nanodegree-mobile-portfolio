@@ -1,6 +1,24 @@
 ## Website Performance Optimization portfolio project
 
-Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
+Notes:
+1. All images were converted to webp using www.online-convert.com
+2. Grunt was used to create the dist folder with the exception of the image files
+I created the appropriate image files and copied the .webp images.  I was not successful 
+in setting up grunt-contrib-copy in grunt.
+3. No animals were harmed while completing this project.
+
+Optimizations Used:
+1. Converted images to .webp format
+2. Minimized critical css.
+3. Inlined minimized css except for the print.min.css
+4. JS that does not affect the DOM was changed to Async
+5. HTML was minimized
+6. JS files were minimized.
+7. Moved unnecssary work from 'for' looks in main.js
+8. Reduced the number of pizzas
+
+
+[Critical Rendering Path course](https://www.udacity.com/course/ud884).
 
 To get started, check out the repository, inspect the code,
 
@@ -11,7 +29,7 @@ To get started, check out the repository, inspect the code,
 Some useful tips to help you get started:
 
 1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
+1. To inspect the site , you can run a local server
 
   ```bash
   $> cd /path/to/your-project-folder
@@ -19,11 +37,11 @@ Some useful tips to help you get started:
   ```
 
 1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.
+1. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.  Note that I needed to add http infront of ngrok 8080 on my system unlike the original directions given for this assignment
 
   ``` bash
   $> cd /path/to/your-project-folder
-  $> ngrok 8080
+  $> http ngrok 8080
   ```
 
 1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
