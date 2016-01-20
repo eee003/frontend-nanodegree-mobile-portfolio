@@ -31,11 +31,11 @@ $> http ngrok 8080
 
 ## How to build the project 
 
-The project has already been configured with a package.json and a Gruntfile. 
-1. Change to the project's root directory.
-2. Install project dependencies with npm install.
-3. Convert images to .webp format using www.online-convert.com and store the converted image files in the orginal folders along with the originals.  The code has been updated to use the .webp files.
-4. Run Grunt with grunt.
+1. The project has already been configured with a package.json and a Gruntfile. 
+2. Change to the project's root directory.
+3. Install project dependencies with npm install.
+4. Convert images to .webp format using www.online-convert.com and store the converted image files in the orginal folders along with the originals.  The code has been updated to use the .webp files.
+5. Run Grunt with grunt.
 
 
 ## Optimizations Used:
