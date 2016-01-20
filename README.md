@@ -1,60 +1,58 @@
 ## Website Performance Optimization portfolio project
 
-Notes:
-1. All images were converted to webp using www.online-convert.com
-2. Grunt was used to create the dist folder with the exception of the image files
-I created the appropriate image files and copied the .webp images.  I was not successful 
-in setting up grunt-contrib-copy in grunt.
-3. No animals were harmed while completing this project.
+----
+## To run the project:
+Navigate to:  [FEND P4: Website Performance Optimization](http://eee003.github.io/frontend-nanodegree-mobile-portfolio/dist/)
+
+
+Alternatively to look at the src and dist folders within the project, 
+navigate to: [My github repository](https://github.com/eee003/frontend-nanodegree-mobile-portfolio)
+
+Once there, you can:
+1. Check out the repository
+2. To inspect the site , you can run a local server
+
+```bash
+$> cd /path/to/your-project-folder
+$> python -m SimpleHTTPServer 8080
+```
+
+1. Open a browser and visit localhost:8080
+2. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.  Note that I needed to add http infront of ngrok 8080 on my system unlike the original directions given for this assignment
+
+``` bash
+$> cd /path/to/your-project-folder
+$> http ngrok 8080
+```
+
+1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! 
+
+
+## How to build the project 
+
+The project has already been configured with a package.json and a Gruntfile. it's very easy to start working with Grunt:
+
+1. Change to the project's root directory.
+2. Install project dependencies with npm install.
+3. Convert images to .webp format using www.online-convert.com and store the converted image files in the orginal folders along with the originals.  The code has been updated to use the .webp files.
+4. Run Grunt with grunt.
+
 
 Optimizations Used:
-1. Converted images to .webp format
-2. Minimized critical css.
+1. Converted images to .webp format (www.online-convert.com)
+2. Minimized critical css. (grunt-contrib-cssmin)
 3. Inlined minimized css except for the print.min.css
 4. JS that does not affect the DOM was changed to Async
-5. HTML was minimized
-6. JS files were minimized.
+5. HTML was minimized (grunt-contrib-cssmin)
+6. JS files were minimized. (grunt-contrib-uglify)
 7. Moved unnecssary work from 'for' looks in main.js
 8. Reduced the number of pizzas
 
 
-[Critical Rendering Path course](https://www.udacity.com/course/ud884).
-
-To get started, check out the repository, inspect the code,
-
-### Getting started
-
-####Part 1: Optimize PageSpeed Insights score for index.html
-
-Some useful tips to help you get started:
-
-1. Check out the repository
-1. To inspect the site , you can run a local server
-
-  ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
-  ```
-
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.  Note that I needed to add http infront of ngrok 8080 on my system unlike the original directions given for this assignment
-
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> http ngrok 8080
-  ```
-
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
-
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
-
-####Part 2: Optimize Frames per Second in pizza.html
-
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
-
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
-
-### Optimization Tips and Tricks
+### Optimization Tips and Tricks and Resources
+* John Mav Hang-out on using Grunt - Thank you John!!!
+* FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks)
+* [Critical Rendering Path course](https://www.udacity.com/course/ud884).
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
 * [Analyzing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/analyzing-crp.html "analyzing crp")
 * [Optimizing the Critical Rendering Path](https://developers.google.com/web/fundamentals/performance/critical-rendering-path/optimizing-critical-rendering-path.html "optimize the crp!")
@@ -72,20 +70,3 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
 * <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
 * <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
 
-### Sample Portfolios
-
-Feeling uninspired by the portfolio? Here's a list of cool portfolios I found after a few minutes of Googling.
-
-* <a href="http://www.reddit.com/r/webdev/comments/280qkr/would_anybody_like_to_post_their_portfolio_site/">A great discussion about portfolios on reddit</a>
-* <a href="http://ianlunn.co.uk/">http://ianlunn.co.uk/</a>
-* <a href="http://www.adhamdannaway.com/portfolio">http://www.adhamdannaway.com/portfolio</a>
-* <a href="http://www.timboelaars.nl/">http://www.timboelaars.nl/</a>
-* <a href="http://futoryan.prosite.com/">http://futoryan.prosite.com/</a>
-* <a href="http://playonpixels.prosite.com/21591/projects">http://playonpixels.prosite.com/21591/projects</a>
-* <a href="http://colintrenter.prosite.com/">http://colintrenter.prosite.com/</a>
-* <a href="http://calebmorris.prosite.com/">http://calebmorris.prosite.com/</a>
-* <a href="http://www.cullywright.com/">http://www.cullywright.com/</a>
-* <a href="http://yourjustlucky.com/">http://yourjustlucky.com/</a>
-* <a href="http://nicoledominguez.com/portfolio/">http://nicoledominguez.com/portfolio/</a>
-* <a href="http://www.roxannecook.com/">http://www.roxannecook.com/</a>
-* <a href="http://www.84colors.com/portfolio.html">http://www.84colors.com/portfolio.html</a>

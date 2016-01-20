@@ -12,19 +12,10 @@ module.exports = function(grunt) {
     jshint: {
       all: ['Gruntfile.js', 'src/js/**/*.js']
     },
-    // copy: {
-    //   main: {
-    //     cwd: 'src',
-    //     src: 'img/*.*',
-    //     dest: 'dist/',
-    //   },
-    // },
     cssmin: {
       dist: {
-        options: {
-             banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-        },
         files: {
+          // 'dist/css/style.min.css': ['src/css/**/*.css']
            'dist/views/css/style.min.css': ['src/views/css/**/style.css'],
            'dist/views/css/bootstrap-grid.min.css': ['src/views/css/**/bootstrap-grid.css'],
            'dist/css/style.min.css': ['src/css/**/style.css'],
@@ -32,38 +23,55 @@ module.exports = function(grunt) {
         }
       }
     },
-    // cssmin: {
-    //   dist: {
-    //     options: {
-    //          banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-    //     },
-    //     files: {
-    //        'dist/css/style.min.css': ['src/css/**/*.css']
-    //     }
-    //   }
-    // },
+    copy: {
+      // copy compressed main page images to dist
+      main: {
+        expand: true,
+        cwd: 'src/',
+        src: 'img/*.webp',
+        dest: 'dist/',
+        filter: 'isFile',
+      },
+      // copy compressed pizza images for pizza.html to dist
+      pizza: {
+        expand: true,
+        cwd: 'src/views',
+        src: 'images/*.webp',
+        dest: 'dist/views/',
+        filter: 'isFile',
+      },
+    },
     concat: {
       // dist: {
       //   src: 'src/js/*.js',
       //   dest: 'dist/js/app.js'
       // }
-         dist: {
-          expand: true,
-          cwd: 'src',
-          src: '**/*.js',
-          dest: 'dist/'
-         }
+      dist: {
+        expand: true,
+        cwd: 'src',
+        src: '**/*.js',
+        dest: 'dist/'
+        }
     },
     uglify: {
       options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        // banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        banner: '/*! FEND: P4 <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
-      build: {
+      // Minimize the perfmatters.js file 
+      main: {
         // src: 'src/<%= pkg.name %>.js',
         // dest: 'build/<%= pkg.name %>.min.js'
-        src: 'dist/**/*.js',
-        dest: 'dist/<%= pkg.name %>.min.js'
-      }
+        src: 'src/js/perfmatters.js',
+        dest: 'dist/js/perfmatters.js'
+      },
+      // Minimize the main.js file used by pizza.html
+      views: {
+        // src: 'src/<%= pkg.name %>.js',
+        // dest: 'build/<%= pkg.name %>.min.js'
+        src: 'src/views/js/main.js',
+        dest: 'dist/views/js/main.js'
+      },
     },
     // Minify all html files.
     htmlmin: {
@@ -80,12 +88,11 @@ module.exports = function(grunt) {
           }]
        }
     }
-
   });
 
   // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  // grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -94,11 +101,10 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('default', [
       'jshint',
-      // 'copy',
+       'copy',
       'cssmin',
       'concat',
       'uglify', 
       'htmlmin'
   ]);
-
 };

@@ -472,10 +472,10 @@ var resizePizzas = function(size) {
   // }
 function changePizzaSizes(size) {
     // PERFORMANCE pull i, dx, newwidth out of loop
-    var i = 0;
+    // var i = 0;  Add back to loop on advice of reviewer
     var dx = determineDx(document.getElementsByClassName('randomPizzaContainer')[i], size);
     var newwidth = (document.getElementsByClassName('randomPizzaContainer')[i].offsetWidth + dx) + 'px';
-    for (; i < document.getElementsByClassName('randomPizzaContainer').length; i++) {
+    for (var i = 0; i < document.getElementsByClassName('randomPizzaContainer').length; i++) {
       document.getElementsByClassName('randomPizzaContainer')[i].style.width = newwidth;
     }
   }
@@ -567,8 +567,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
   // for (var i = 0; i < 200; i++) {
-  // PERFORMANCE - Reduce number of pizzas  
-  for (var i = 0; i < 64; i++) {  
+  // PERFORMANCE - Reduce number of pizzas and even further on advice of reviewer 
+  for (var i = 0; i < 40; i++) {  
     var elem = document.createElement('img');
     elem.className = 'mover';
     // Use webp instead of png
