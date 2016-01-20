@@ -9,6 +9,7 @@ Alternatively to look at the src and dist folders within the project,
 navigate to: [My github repository](https://github.com/eee003/frontend-nanodegree-mobile-portfolio)
 
 Once there, you can:
+##
 1. Check out the repository
 2. To inspect the site , you can run a local server
 
@@ -16,7 +17,7 @@ Once there, you can:
 $> cd /path/to/your-project-folder
 $> python -m SimpleHTTPServer 8080
 ```
-
+##
 1. Open a browser and visit localhost:8080
 2. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.  Note that I needed to add http infront of ngrok 8080 on my system unlike the original directions given for this assignment
 
@@ -30,15 +31,14 @@ $> http ngrok 8080
 
 ## How to build the project 
 
-The project has already been configured with a package.json and a Gruntfile. it's very easy to start working with Grunt:
-
+The project has already been configured with a package.json and a Gruntfile. 
 1. Change to the project's root directory.
 2. Install project dependencies with npm install.
 3. Convert images to .webp format using www.online-convert.com and store the converted image files in the orginal folders along with the originals.  The code has been updated to use the .webp files.
 4. Run Grunt with grunt.
 
 
-Optimizations Used:
+## Optimizations Used:
 1. Converted images to .webp format (www.online-convert.com)
 2. Minimized critical css. (grunt-contrib-cssmin)
 3. Inlined minimized css except for the print.min.css
