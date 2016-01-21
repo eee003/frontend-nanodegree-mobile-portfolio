@@ -19,6 +19,8 @@ cameron *at* udacity *dot* com
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
 var pizzaIngredients = {};
+// make this variable global on advice of reviewers - only need to get this once
+var items;
 pizzaIngredients.meats = [
   "Pepperoni",
   "Sausage",
@@ -473,8 +475,9 @@ var resizePizzas = function(size) {
 function changePizzaSizes(size) {
     // PERFORMANCE pull i, dx, newwidth out of loop
     // var i = 0;  Add back to loop on advice of reviewer
-    var dx = determineDx(document.getElementsByClassName('randomPizzaContainer')[i], size);
-    var newwidth = (document.getElementsByClassName('randomPizzaContainer')[i].offsetWidth + dx) + 'px';
+    // change [i] to [0] because of change
+    var dx = determineDx(document.getElementsByClassName('randomPizzaContainer')[0], size);
+    var newwidth = (document.getElementsByClassName('randomPizzaContainer')[0].offsetWidth + dx) + 'px';
     for (var i = 0; i < document.getElementsByClassName('randomPizzaContainer').length; i++) {
       document.getElementsByClassName('randomPizzaContainer')[i].style.width = newwidth;
     }
@@ -492,8 +495,8 @@ window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
 // for (var i = 2; i < 100; i++) {  
-// PERFORMANCE UPDATE - Halve the number of generated pizzas  
-for (var i = 2; i < 100; i++) {
+// PERFORMANCE UPDATE - Reduce the number of generated pizzas  
+for (var i = 2; i < 50; i++) {
   var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
@@ -532,14 +535,17 @@ function updatePositions() {
   // Use getElementByClassName rather than querySelectorAll for performance
   // var items = document.querySelectorAll('.mover');
   // Move phase calculation out of loop
-  var items = document.getElementsByClassName('mover');
+  // var items = document.getElementsByClassName('mover');
   var top = document.body.scrollTop / 1250; 
-  var phase = [ Math.sin(top + 0),
-                      Math.sin(top + 1),
-                      Math.sin(top + 2),
-                      Math.sin(top + 3),
-                      Math.sin(top + 4),
-                      Math.sin(top + 5)];
+
+  // Advice of reviewer change to loop to initialize
+  var phase = {};
+  for (var p = 0; p < 5; p++) { phase[p] = Math.sin(top + p) };
+  // var phase = [ Math.sin(top + 0),
+  //                     Math.sin(top + 1),
+  //                     Math.sin(top + 2),
+  //                     Math.sin(top + 3),
+  //                     Math.sin(top + 4)];
   for (var i = 0; i < items.length; i++) {
     // var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     // document.body.scrollTop will not change during this function call
@@ -565,10 +571,17 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   'use strict';
   var cols = 8;
-  var s = 256;
+  var s = 256;    // height of a row in pixels
+  
+  var pizzaRows = Math.ceil(window.innerHeight / s);
+  var noBackgroundPizzas = cols * pizzaRows;
+  
+  console.log("No of Background Pizzas  " + noBackgroundPizzas);
   // for (var i = 0; i < 200; i++) {
-  // PERFORMANCE - Reduce number of pizzas and even further on advice of reviewer 
-  for (var i = 0; i < 40; i++) {  
+  // PERFORMANCE - Reduce number of pizzas even further
+  // on advice of reviewer use window.innerHeight to calculate
+  // number of pizzas
+  for (var i = 0; i < noBackgroundPizzas; i++) {  
     var elem = document.createElement('img');
     elem.className = 'mover';
     // Use webp instead of png
@@ -579,5 +592,10 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
   }
+
+  // Move setting of items here on advice of reviewer
+  // this only needs to be set at load. 
+  items = document.getElementsByClassName('mover');
+
   updatePositions();
 });
